@@ -6,8 +6,6 @@ const int MAX = 100;
 int capacity[MAX][MAX];
 int flow[MAX][MAX];
 int n;
-
-// Create random complete graph
 void createGraph()
 {
     srand(time(0));
@@ -24,7 +22,6 @@ void createGraph()
     }
 }
 
-// BFS to find a path
 bool bfs(int source, int sink, int parent[])
 {
     bool visited[MAX] = {false};
@@ -56,8 +53,6 @@ bool bfs(int source, int sink, int parent[])
 
     return false;
 }
-
-// Edmonds-Karp
 int maxFlow(int source, int sink)
 {
     int totalFlow = 0;
@@ -66,10 +61,7 @@ int maxFlow(int source, int sink)
     while (bfs(source, sink, parent))
     {
         int pathFlow = INT_MAX;
-
         int v = sink;
-
-        // Find minimum capacity in path
         while (v != source)
         {
             int u = parent[v];
@@ -79,8 +71,6 @@ int maxFlow(int source, int sink)
 
             v = u;
         }
-
-        // Update flow
         v = sink;
 
         while (v != source)
@@ -98,8 +88,6 @@ int maxFlow(int source, int sink)
 
     return totalFlow;
 }
-
-// Display graph
 void displayGraph()
 {
     cout << "\nGenerated Graph:\n";
