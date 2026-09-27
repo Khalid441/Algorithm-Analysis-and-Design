@@ -45,8 +45,6 @@ int main() {
 
         edges[i] = {u, v, w};
     }
-
-    // Set stores all different spanning tree costs
     set<int> costs;
 
     int total = (1 << m);
@@ -88,11 +86,8 @@ int main() {
         return 0;
     }
 
-    // Minimum and maximum
     int minimum = *costs.begin();
     int maximum = *costs.rbegin();
-
-    // Average
     long long sum = 0;
 
     for(auto x : costs)
@@ -106,8 +101,6 @@ int main() {
     cout << "Average: "
          << fixed << setprecision(2)
          << average << '\n';
-
-    // Check average using set::find()
     if(average == (int)average &&
        costs.find((int)average) != costs.end()) {
 
